@@ -1,11 +1,11 @@
 import React from "react";
-import { Provider as PaperProvider } from "react-native-paper";
+// import { Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import About from "./components/About";
 import ItemDetail from "./components/ItemDetail";
 import Home from "./components/Home";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 const Root = createNativeStackNavigator();
@@ -20,7 +20,10 @@ export default function App() {
           options={({ navigation }) => ({
             headerRight: () => (
               <TouchableOpacity onPress={() => navigation.navigate("About")}>
-                <AntDesign name="infocirlceo" size={24} color="black" />
+                <View style={styles.headerRight}>
+                  <Text style={styles.headerRightContent}>About</Text>
+                  <AntDesign name="infocirlceo" size={24} color="black" />
+                </View>
               </TouchableOpacity>
             ),
           })}
@@ -31,3 +34,15 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  headerRight: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  headerRightContent: {
+    padding: 5
+  }
+});
