@@ -7,6 +7,7 @@ import ItemDetail from "./components/ItemDetail";
 import Home from "./components/Home";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import Library from "./components/Library";
 
 const Root = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
         />
         <Root.Screen name={"About"} component={About} />
         <Root.Screen name={"ItemDetail"} component={ItemDetail} />
+        <Root.Screen name={"Library Hours"} component={Library}/>
       </Root.Navigator>
     </NavigationContainer>
   );

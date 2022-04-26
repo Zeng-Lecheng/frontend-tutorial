@@ -3,7 +3,12 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import { Button, Checkbox } from "react-native-paper";
 
-export default function Home() {
+/**
+ * You might see a ESLint error on the "navigation" saying 
+ * "navigation' is missing in props"
+ * I have no idea how to fix it to my knowledge. This is necessary for navigate between pages.
+ */
+const Home = ({ navigation }) => {
   const [num, setNum] = useState(0);
   const [todo, setTodo] = useState([]);
   const [flipping, setFlipping] = useState(false);
@@ -104,15 +109,21 @@ export default function Home() {
         </Button>
       </View>
 
-      <View style={{ flex: 10, justifyContent: "center", alignContent: "flex-start" }}>
+      <View style={{ flex: 8, justifyContent: "center", alignContent: "flex-start" }}>
         <TodoList />
-        <Button mode="contained" onPress={() => setHideDone(! hideDone)}>
+        <Button mode="outlined" onPress={() => setHideDone(!hideDone)}>
           {hideDone ? "Show checked" : "Hide checked"}
+        </Button>
+      </View>
+
+      <View style={{ flex: 1, padding: 30 }}>
+        <Button mode="contained" onPress={() => navigation.navigate("Library Hours")}>
+          View Library hours
         </Button>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -122,3 +133,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
 });
+
+export default Home;
